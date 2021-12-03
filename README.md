@@ -96,7 +96,7 @@ python main_uncer.py --dataset_dir bdd100k
 
 
 ## **Citation**
-If you use this code for your research, please cite our paper:
+If our code is helpful your research, please cite our paper:
 ```
 @InProceedings{kwak_adverse_2021},
   author = {Jeong-gi, Kwak and Youngsaeng, Jin and Yuanming, Li and Dongsik, Yoon and  Donghyeon, Kim and Hanseok, Ko},
