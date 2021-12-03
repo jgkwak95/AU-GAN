@@ -12,7 +12,7 @@ Jeong-gi Kwak, Youngsaeng Jin, Yuanming Li, Dongsik Yoon, Donghyeon Kim and Hans
 </br>
 
 
-## Envs
+## **Envs**
 
 ```bash
 
@@ -28,7 +28,7 @@ pip install --no-cache-dir -r requirements.txt
 
 ```
 
-## Preparing datasets
+## **Preparing datasets**
 
 **Night &rarr; Day** </br>
 [Berkeley DeepDrive dataset](https://bdd-data.berkeley.edu/)</br></br>
@@ -36,3 +36,19 @@ pip install --no-cache-dir -r requirements.txt
 [Alderley dataset](https://wiki.qut.edu.au/pages/viewpage.action?pageId=181178395)</br>
 </br>
 Download and prepare dataset following [ForkGAN](https://github.com/zhengziqiang/ForkGAN)
+
+
+
+## **Citation**
+If you use this code for your research, please cite our paper:
+```
+@InProceedings{kwak_adverse_2021},
+  author = {Jeong-gi, Kwak and Youngsaeng, Jin and Yuanming, Li and Dongsik, Yoon and  Donghyeon, Kim and Hanseok, Ko},
+  title = {Adverse Weather Image Translation with Asymmetric and Uncertainty-aware GAN},
+  booktitle = {British Conference of Computer Vision (BMVC)},
+  month = {November},
+  year = {2021}
+}
+```
+## Acknowledgments
+The code is heavely based on the [ForkGAN](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123480154.pdf) implementation
