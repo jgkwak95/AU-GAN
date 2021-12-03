@@ -6,7 +6,7 @@ Jeong-gi Kwak, Youngsaeng Jin, Yuanming Li, Dongsik Yoon, Donghyeon Kim and Hans
 
 ### Night to day 
 <img src="./assets/augan_bdd.png" width="800">
-</br>
+
 ### Rainy night to day 
 <img src="./assets/augan_alderley.png" width="800">
 </br>
