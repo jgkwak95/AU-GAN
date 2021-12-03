@@ -13,7 +13,7 @@ Jeong-gi Kwak, Youngsaeng Jin, Yuanming Li, Dongsik Yoon, Donghyeon Kim and Hans
 
 
 ## Architecture
-<img src="./assets/augan_model.png" width="800">
+<img src="./assets/augan_model.pdf" width="800">
 Our generator has asymmetric structure (day&rarr;night and night&rarr;day) and estimates uncertainty
 
 
@@ -99,8 +99,10 @@ python main_uncer.py --dataset_dir bdd100k
 ```
 ## Additional results
 <img src="./assets/augan_model.png" width="800">
+
 ## Uncertainty map 
 <img src="./assets/augan_model.png" width="800">
+
 ## **Citation**
 If our code is helpful your research, please cite our paper:
 ```
