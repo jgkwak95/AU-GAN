@@ -31,13 +31,71 @@ pip install --no-cache-dir -r requirements.txt
 ## **Preparing datasets**
 
 **Night &rarr; Day** </br>
-[Berkeley DeepDrive dataset](https://bdd-data.berkeley.edu/) contains 100,000high resolution images of the urban roads for autonomous driving.</br></br>
+[Berkeley DeepDrive dataset](https://bdd-data.berkeley.edu/) contains 100,000 high resolution images of the urban roads for autonomous driving.</br></br>
 **Rainy night &rarr; Day** </br>
 [Alderley dataset](https://wiki.qut.edu.au/pages/viewpage.action?pageId=181178395)consists of images of two domains,
 rainy night and daytime. It was collected while driving the same route in each weather environment.</br>
 </br>
 Download and prepare dataset following [ForkGAN](https://github.com/zhengziqiang/ForkGAN)
 
+## Training
+
+```bash
+
+# Alderley
+python main_uncer.py --dataset_dir alderley\  
+                     --phase train
+                     --experiment_name alderley_exp\ 
+                     --batch_size 8 
+                     --load_size 286 
+                     --fine_size 256 
+                     --gpu 0 
+                     --use_uncertainty True
+
+```
+
+```bash
+
+# BDD100k
+python main_uncer.py --dataset_dir bdd100k\  
+                     --phase train
+                     --experiment_name bdd_exp\ 
+                     --batch_size 4 
+                     --load_size 572 
+                     --fine_size 512 
+                     --gpu 1 
+                     --use_uncertainty True
+
+```
+
+## Test
+
+```bash
+
+# Alderley
+python main_uncer.py --dataset_dir alderley\  
+                     --phase test
+                     --experiment_name alderley_exp\ 
+                     --batch_size 1 
+                     --load_size 286 
+                     --fine_size 256 
+                     --gpu 0 
+                    
+```
+
+```bash
+
+# BDD100k
+python main_uncer.py --dataset_dir bdd100k\  
+                     --phase train
+                     --experiment_name bdd_exp\ 
+                     --batch_size 4 
+                     --load_size 572 
+                     --fine_size 512 
+                     --gpu 1 
+                    
+
+```
 
 
 ## **Citation**
