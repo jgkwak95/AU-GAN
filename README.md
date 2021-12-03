@@ -43,13 +43,12 @@ Download and prepare dataset following [ForkGAN](https://github.com/zhengziqiang
 ```bash
 
 # Alderley
-python main_uncer.py --dataset_dir alderley\  
+python main_uncer.py --dataset_dir alderley
                      --phase train
-                     --experiment_name alderley_exp\ 
+                     --experiment_name alderley_exp
                      --batch_size 8 
                      --load_size 286 
                      --fine_size 256 
-                     --gpu 0 
                      --use_uncertainty True
 
 ```
@@ -57,13 +56,12 @@ python main_uncer.py --dataset_dir alderley\
 ```bash
 
 # BDD100k
-python main_uncer.py --dataset_dir bdd100k\  
+python main_uncer.py --dataset_dir bdd100k 
                      --phase train
-                     --experiment_name bdd_exp\ 
+                     --experiment_name bdd_exp
                      --batch_size 4 
                      --load_size 572 
                      --fine_size 512 
-                     --gpu 1 
                      --use_uncertainty True
 
 ```
@@ -73,22 +71,21 @@ python main_uncer.py --dataset_dir bdd100k\
 ```bash
 
 # Alderley
-python main_uncer.py --dataset_dir alderley\  
+python main_uncer.py --dataset_dir alderley
                      --phase test
-                     --experiment_name alderley_exp\ 
+                     --experiment_name alderley_exp
                      --batch_size 1 
                      --load_size 286 
                      --fine_size 256 
-                     --gpu 0 
                     
 ```
 
 ```bash
 
 # BDD100k
-python main_uncer.py --dataset_dir bdd100k\  
+python main_uncer.py --dataset_dir bdd100k
                      --phase train
-                     --experiment_name bdd_exp\ 
+                     --experiment_name bdd_exp
                      --batch_size 4 
                      --load_size 572 
                      --fine_size 512 
