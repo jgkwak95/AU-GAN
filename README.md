@@ -1,4 +1,7 @@
 # Adverse Weather Image Translation with Asymmetric and Uncertainty-aware GAN (BMVC 2021)
+
+<img src="./assets/bdd.png" width="800">
+
 Official code of [Adverse Weather Image Translation with Asymmetric and Uncertainty-aware GAN](https://jgkwak95.github.io/) (AU-GAN)\
 Jeong-gi Kwak, Youngsaeng Jin, Yuanming Li, Dongsik Yoon, Donghyeon Kim and Hanseok Ko </br>
 *British Machine Vision Conference (BMVC), 2021*
