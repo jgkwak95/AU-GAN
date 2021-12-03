@@ -27,3 +27,11 @@ conda install tensorflow-gpu==1.14.0   # Tensorflow 1.14
 pip install --no-cache-dir -r requirements.txt
 
 ```
+
+## Preparing datasets
+
+** Night &rarr; Day ** <\br>
+[Berkeley DeepDrive dataset](https://bdd-data.berkeley.edu/)
+** Rainy night &rarr; Day ** <\br>
+[Alderley dataset](https://wiki.qut.edu.au/pages/viewpage.action?pageId=181178395)<\br>
+Download and prepare dataset following [ForkGAN](https://github.com/zhengziqiang/ForkGAN)
