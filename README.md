@@ -4,10 +4,10 @@ Jeong-gi Kwak, Youngsaeng Jin, Yuanming Li, Dongsik Yoon, Donghyeon Kim and Hans
 *British Machine Vision Conference (BMVC), 2021*
 </br>
 
-### Night &rarr; day ([BDD100K](https://bdd-data.berkeley.edu/))
+### Night &rarr; Day ([BDD100K](https://bdd-data.berkeley.edu/))
 <img src="./assets/augan_bdd.png" width="800">
 
-### Rainy night to day ([Alderdey](https://wiki.qut.edu.au/pages/viewpage.action?pageId=181178395))
+### Rainy night &rarr; Day ([Alderdey](https://wiki.qut.edu.au/pages/viewpage.action?pageId=181178395))
 <img src="./assets/augan_alderley.png" width="800">
 </br>
 
