@@ -1,4 +1,4 @@
-# Adverse Weather Image Translation with Asymmetric and Uncertainty-aware GAN (BMVC 2021)
+# Adverse Weather Image Translation with Asymmetric and Uncertainty-aware GAN (AUGAN)
 Official code of [Adverse Weather Image Translation with Asymmetric and Uncertainty-aware GAN]() (AU-GAN)\
 Jeong-gi Kwak, Youngsaeng Jin, Yuanming Li, Dongsik Yoon, Donghyeon Kim and Hanseok Ko </br>
 *British Machine Vision Conference (BMVC), 2021*
