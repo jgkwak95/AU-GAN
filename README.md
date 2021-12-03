@@ -51,4 +51,4 @@ If you use this code for your research, please cite our paper:
 }
 ```
 ## Acknowledgments
-The code is heavely based on the [ForkGAN](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123480154.pdf) implementation
+The code is bulided upon the [ForkGAN](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123480154.pdf) implementation.
