@@ -84,12 +84,11 @@ python main_uncer.py --dataset_dir alderley
 
 # BDD100k (512x512)
 python main_uncer.py --dataset_dir bdd100k
-                     --phase train
+                     --phase test
                      --experiment_name bdd_exp
-                     --batch_size 4 
+                     --batch_size 1 
                      --load_size 572 
                      --fine_size 512 
-                     --gpu 1 
                     
 
 ```
