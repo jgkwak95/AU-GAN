@@ -100,7 +100,7 @@ python main_uncer.py --dataset_dir bdd100k
 ## Additional results
 <img src="./assets/augan_result.png" width="800">
 
-More results in [paper](https://www.bmvc2021-virtualconference.com/assets/papers/1443.pdf) and [supplementary]
+More results in [paper](https://www.bmvc2021-virtualconference.com/assets/papers/1443.pdf) and [supplementary]()
 
 ## Uncertainty map 
 <img src="./assets/augan_uncer.png" width="800">
