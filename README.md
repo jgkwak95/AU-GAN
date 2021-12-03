@@ -37,7 +37,7 @@ pip install --no-cache-dir -r requirements.txt
 [Alderley dataset](https://wiki.qut.edu.au/pages/viewpage.action?pageId=181178395) consists of images of two domains,
 rainy night and daytime. It was collected while driving the same route in each weather environment.</br>
 </br>
-Download and prepare dataset following [ForkGAN](https://github.com/zhengziqiang/ForkGAN)
+Please download datasets and then construct them following [ForkGAN](https://github.com/zhengziqiang/ForkGAN)
 
 ## Training
 
