@@ -34,7 +34,7 @@ pip install --no-cache-dir -r requirements.txt
 **Night &rarr; Day** </br>
 [Berkeley DeepDrive dataset](https://bdd-data.berkeley.edu/) contains 100,000 high resolution images of the urban roads for autonomous driving.</br></br>
 **Rainy night &rarr; Day** </br>
-[Alderley dataset](https://wiki.qut.edu.au/pages/viewpage.action?pageId=181178395)consists of images of two domains,
+[Alderley dataset](https://wiki.qut.edu.au/pages/viewpage.action?pageId=181178395) consists of images of two domains,
 rainy night and daytime. It was collected while driving the same route in each weather environment.</br>
 </br>
 Download and prepare dataset following [ForkGAN](https://github.com/zhengziqiang/ForkGAN)
