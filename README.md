@@ -1,5 +1,5 @@
 # Adverse Weather Image Translation with Asymmetric and Uncertainty-aware GAN (AU-GAN)
-Official Tensorflow implementation of [Adverse Weather Image Translation with Asymmetric and Uncertainty-aware GAN]() (AU-GAN)\
+Official Tensorflow implementation of [Adverse Weather Image Translation with Asymmetric and Uncertainty-aware GAN](https://www.bmvc2021-virtualconference.com/assets/papers/1443.pdf) (AU-GAN)\
 Jeong-gi Kwak, Youngsaeng Jin, Yuanming Li, Dongsik Yoon, Donghyeon Kim and Hanseok Ko </br>
 *British Machine Vision Conference (BMVC), 2021*
 </br>
