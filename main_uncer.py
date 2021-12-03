@@ -21,7 +21,7 @@ parser.add_argument('--input_nc', dest='input_nc', type=int, default=3, help='# 
 parser.add_argument('--output_nc', dest='output_nc', type=int, default=3, help='# of output image channels')
 parser.add_argument('--lr', dest='lr', type=float, default=0.0002, help='initial learning rate for adam')
 parser.add_argument('--beta1', dest='beta1', type=float, default=0.5, help='momentum term of adam')
-parser.add_argument('--which_direction', dest='which_direction', default='AtoB', help='AtoB or BtoA')
+parser.add_argument('--which_direction', dest='which_direction', default='AtoB', help='AtoB or BtoA ')
 parser.add_argument('--phase', dest='phase', default='train', help='train, test')
 parser.add_argument('--save_freq', dest='save_freq', type=int, default=1000,help='save a model every save_freq iterations')
 parser.add_argument('--print_freq', dest='print_freq', type=int, default=100,help='print the debug information every print_freq iterations')
