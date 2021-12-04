@@ -115,3 +115,18 @@ def norm_img(img):
     img = (img * 2.) - 1.
 
     return img
+
+
+def set_path(args, experiment_name):
+    args.checkpoint_dir = f'./check/{experiment_name}'
+    args.sample_dir = f'./check/{experiment_name}/sample'
+    if args.which_direction == 'AtoB':
+        args.test_dir = f'./check/{experiment_name}/testa2b'
+    else:
+        args.test_dir = f'./check/{experiment_name}/testb2a'
+    if not os.path.exists(args.checkpoint_dir):
+        os.makedirs(args.checkpoint_dir)
+    if not os.path.exists(args.sample_dir):
+        os.makedirs(args.sample_dir)
+    if not os.path.exists(args.test_dir):
+        os.makedirs(args.test_dir)

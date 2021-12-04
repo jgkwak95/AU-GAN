@@ -4,6 +4,7 @@ from utils import *
 from loss_utils import *
 from ops import *
 import time
+import matplotlib.pyplot as plt
 from glob import glob
 
 
@@ -39,11 +40,10 @@ class AUGAN(object):
         self.options = OPTIONS._make((args.batch_size, args.fine_size,
                                       args.ngf, args.ndf // args.n_d, args.output_nc,
                                       args.phase == 'train'))
-
+        self.save_conf = args.save_conf
         self._build_model()
         self.saver = tf.train.Saver()
         self.pool = ImagePool(args.max_size)
-
 
     def _build_model(self):
         self.real_data = tf.placeholder(tf.float32, [self.batch_size, self.image_size, self.image_size * 2,
@@ -86,14 +86,13 @@ class AUGAN(object):
             self.DB_fake = self.discriminator(self.fake_B, self.options, reuse=False, name=str(i) + "_discriminatorB")
             self.DA_fake = self.discriminator(self.fake_A, self.options, reuse=False, name=str(i) + "_discriminatorA")
 
-
             self.g_adv_total += self.criterionGAN_list(self.DA_fake,
                                                        get_ones_like(self.DA_fake)) + self.criterionGAN_list(
                 self.DB_fake, get_ones_like(self.DB_fake))
 
+
             self.g_adv += self.criterionGAN_list(self.DA_fake, get_ones_like(self.DA_fake)) + self.criterionGAN_list(
                 self.DB_fake, get_ones_like(self.DB_fake))
-
 
         self.g_loss_a2b = self.criterionGAN_list(self.DB_fake, get_ones_like(self.DB_fake)) \
                           + self.L1_lambda * abs_criterion(self.real_A, self.fake_A_) \
@@ -158,7 +157,6 @@ class AUGAN(object):
             self.d_loss = (self.da_loss + self.db_loss)
             self.d_loss_item.append(self.d_loss)
 
-
         self.g_loss_a2b_sum = tf.summary.scalar("g_loss_a2b", self.g_loss_a2b)
         self.g_loss_b2a_sum = tf.summary.scalar("g_loss_b2a", self.g_loss_b2a)
         self.g_loss_sum = tf.summary.scalar("g_loss", self.g_loss)
@@ -203,15 +201,13 @@ class AUGAN(object):
             self.d_vars = [var for var in t_vars if str(i) + '_discriminator' in var.name]
             self.d_vars_item.append(self.d_vars)
 
-
     def train(self, args):
-        """Train cyclegan"""
+
         self.lr = tf.placeholder(tf.float32, None, name='learning_rate')
 
         ### generator
         self.g_optim = tf.train.AdamOptimizer(self.lr, beta1=args.beta1) \
             .minimize(self.g_loss, var_list=self.g_vars)
-
 
         ### translation
         self.d_optim_item = []
@@ -219,7 +215,6 @@ class AUGAN(object):
             self.d_optim = tf.train.AdamOptimizer(self.lr, beta1=args.beta1) \
                 .minimize(self.d_loss_item[i], var_list=self.d_vars_item[i])
             self.d_optim_item.append(self.d_optim)
-
 
         init_op = tf.global_variables_initializer()
         self.sess.run(init_op)
@@ -267,16 +262,11 @@ class AUGAN(object):
                                    self.fake_A_sample: fake_A,
                                    self.fake_B_sample: fake_B, self.lr: lr})
 
-
                     loss_print.append(d_loss)
-
 
                 counter += 1
                 print(("Epoch: [%2d] [%4d/%4d] time: %4.4f g_loss: %4.4f gan:%4.4f adv:%4.4f g_percep:%4.4f " % (
                     epoch, idx, batch_idxs, time.time() - start_time, g_loss, gan_loss, g_adv, percep)))
-                print(("g_A_recon:%4.4f g_B_recon:%4.4f g_A_cycle:%4.4f g_B_cycle:%4.4f " % (
-                g_A_recon_loss, g_B_recon_loss, g_A_cycle_loss, g_B_cycle_loss)))
-                print(loss_print)
 
                 if np.mod(counter, args.print_freq) == 1:
                     self.sample_model(args.sample_dir, epoch, idx)
@@ -320,19 +310,17 @@ class AUGAN(object):
                          batch_files]
         sample_images = np.array(sample_images).astype(np.float32)
 
-        fake_A, fake_B, rec_cycle_A, rec_cycle_B, rec_A, rec_B, rec_fakeA, rec_fakeB, confA = self.sess.run(
-            [self.fake_A, self.fake_B, self.fake_A_, self.fake_B_, self.rec_realA, self.rec_realB, self.rec_fakeA,
-             self.rec_fakeB, self.pred_confA],
+        fake_A, fake_B = self.sess.run(
+            [self.fake_A, self.fake_B],
             feed_dict={self.real_data: sample_images}
         )
         real_A = sample_images[:, :, :, :3]
         real_B = sample_images[:, :, :, 3:]
 
-        print("confA max ", np.max(confA), "confA mean", np.mean(confA))
-        norm_confA = norm_img(confA)
 
-        merge_A = np.concatenate([real_B, fake_A, rec_B, rec_fakeA, rec_cycle_B], axis=2)
-        merge_B = np.concatenate([real_A, fake_B, rec_A, rec_fakeB, rec_cycle_A], axis=2)
+
+        merge_A = np.concatenate([real_B, fake_A], axis=2)
+        merge_B = np.concatenate([real_A, fake_B], axis=2)
         check_folder('./{}/{:02d}'.format(sample_dir, epoch))
         save_images(merge_A, [self.batch_size, 1],
                     './{}/{:02d}/A_{:04d}.jpg'.format(sample_dir, epoch, idx))
@@ -340,7 +328,7 @@ class AUGAN(object):
                     './{}/{:02d}/B_{:04d}.jpg'.format(sample_dir, epoch, idx))
 
     def test(self, args):
-        """Test cyclegan"""
+
         init_op = tf.global_variables_initializer()
         self.sess.run(init_op)
         if args.which_direction == 'AtoB':
@@ -354,17 +342,32 @@ class AUGAN(object):
             print(" [*] Load SUCCESS")
         else:
             print(" [!] Load failed...")
-        out_var, refine_var, in_var, rec_var, cycle_var, percep_var = (
-        self.testB, self.refine_testB, self.test_A, self.rec_testA, self.rec_cycle_A,
-        self.testA_percep) if args.which_direction == 'AtoB' else (
-            self.testA, self.refine_testA, self.test_B, self.rec_testB, self.rec_cycle_B, self.testB_percep)
+        out_var, refine_var, in_var, rec_var, cycle_var, percep_var, conf_var = (
+            self.testB, self.refine_testB, self.test_A, self.rec_testA, self.rec_cycle_A, self.testA_percep,
+            self.test_pred_confA) if args.which_direction == 'AtoB' else (
+            self.testA, self.refine_testA, self.test_B, self.rec_testB, self.rec_cycle_B, self.testB_percep,
+            self.test_pred_confA)
         for sample_file in sample_files:
             print('Processing image: ' + sample_file)
             sample_image = [load_test_data(sample_file, args.fine_size)]
             sample_image = np.array(sample_image).astype(np.float32)
             image_path = os.path.join(args.test_dir,
                                       '{0}_{1}'.format(args.which_direction, os.path.basename(sample_file)))
-            fake_img, refine_fake, rec_img, cycle_img, percep_img = self.sess.run(
-                [out_var, refine_var, rec_var, cycle_var, percep_var], feed_dict={in_var: sample_image})
-            merge = np.concatenate([sample_image, fake_img, refine_fake, rec_img, cycle_img], axis=2)
+            conf_path = os.path.join(args.conf_dir,
+                                     '{0}_{1}'.format(args.which_direction, os.path.basename(sample_file)))
+
+            fake_img, = self.sess.run([out_var], feed_dict={in_var: sample_image})
+            merge = np.concatenate([sample_image, fake_img], axis=2)
             save_images(merge, [1, 1], image_path)
+
+            if args.save_conf:
+
+                if args.which_direction == 'AtoB':
+                    pass
+                else:
+                    raise Exception('--conf map only can be estimated in AtoB direction')
+
+                conf_img = self.sess.run(conf_var, feed_dict={in_var: sample_image})
+                conf_img_sq = np.squeeze(conf_img)
+                plt.imshow(conf_img_sq, cmap='plasma', interpolation='nearest', alpha=1.0)
+                plt.savefig(conf_path)

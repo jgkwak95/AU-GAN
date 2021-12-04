@@ -13,10 +13,11 @@ def conf_criterion_lp(im1, im2, conf_sigma):  # factorized laplacian distributio
     return loss
 
 
+
 def conf_criterion(im1, im2, conf_sigma):  # gaussian distribution
     loss = tf.abs(im1 - im2)
     if conf_sigma is not None:
-        loss = tf.math.exp(-conf_sigma)  * loss + conf_sigma / 2
+        loss = tf.math.exp(-conf_sigma) * 5 * loss + conf_sigma / 2
         loss = tf.reduce_mean(loss)
     else:
         loss = tf.reduce_mean(loss)

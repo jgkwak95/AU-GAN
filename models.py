@@ -64,15 +64,16 @@ def generator_resnet(image, options, transfer=False, reuse=False, name="generato
             t2 = residual_block(t1, options.gf_dim * 4, name='g_t2')
             t3 = residual_block(t2, options.gf_dim * 4, name='g_t3')
             t4 = residual_block(t3, options.gf_dim * 4, name='g_t4')
-            feature = tf.concat([r4, t4], axis=3, name='g_concat')
-            down = True
+            # feature = tf.concat([r4, t4], axis=3, name='g_concat')
+            # down = True
+            feature = t4
         else:
             feature = r4
             t4 = None
             down = False
 
         ### translation decoder architecture
-        r6 = residule_block_dilated(feature, options.gf_dim * 4, name='g_r6', down=down)
+        r6 = residule_block_dilated(feature, options.gf_dim * 4, name='g_r6')
         r7 = residule_block_dilated(r6, options.gf_dim * 4, name='g_r7')
         r8 = residule_block_dilated(r7, options.gf_dim * 4, name='g_r8')
         r9 = residule_block_dilated(r8, options.gf_dim * 4, name='g_r9')
@@ -110,7 +111,6 @@ def generator_resnet(image, options, transfer=False, reuse=False, name="generato
             pred_conf = None
 
         return pred, pred_rec, r4, t4, pred_conf
-
 
 def discriminator(image, options, n_scale=2, reuse=False, name="discriminator"):
     images = []
