@@ -37,18 +37,6 @@ parser.add_argument('--save_conf', dest='save_conf', type=bool, default=False, h
 args = parser.parse_args()
 os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu)
 def main(_):
-    # args.checkpoint_dir = f'./check/{args.experiment_name}'
-    # args.sample_dir = f'./check/{args.experiment_name}/sample'
-    # if args.which_direction == 'AtoB':
-    #     args.test_dir = f'./check/{args.experiment_name}/testa2b'
-    # else:
-    #     args.test_dir = f'./check/{args.experiment_name}/testb2a'
-    # if not os.path.exists(args.checkpoint_dir):
-    #     os.makedirs(args.checkpoint_dir)
-    # if not os.path.exists(args.sample_dir):
-    #     os.makedirs(args.sample_dir)
-    # if not os.path.exists(args.test_dir):
-    #     os.makedirs(args.test_dir)
 
     set_path(args, args.experiment_name)
 
