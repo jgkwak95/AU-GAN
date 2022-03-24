@@ -130,4 +130,4 @@ If our code is helpful for your research, please cite our paper:
 }
 ```
 ## Acknowledgments
-Our code is bulided upon the [ForkGAN](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123480154.pdf) implementation.
+Our code is bulided upon the [ForkGAN](https://github.com/zhengziqiang/ForkGAN) implementation.
