@@ -110,12 +110,11 @@ More results in [paper](https://www.bmvc2021-virtualconference.com/assets/papers
 ## **Citation**
 If our code is helpful your research, please cite our paper:
 ```
-@InProceedings{kwak_adverse_2021},
-  author = {Kwak, Jeong-gi and Jin, Youngsaeng and Li, Yuanming and Yoon, Dongsik and Kim, Donghyeon and Ko, Hanseok},
-  title = {Adverse Weather Image Translation with Asymmetric and Uncertainty-aware GAN},
-  booktitle = {British Conference of Computer Vision (BMVC)},
-  month = {November},
-  year = {2021}
+@article{kwak2021adverse,
+  title={Adverse weather image translation with asymmetric and uncertainty-aware GAN},
+  author={Kwak, Jeong-gi and Jin, Youngsaeng and Li, Yuanming and Yoon, Dongsik and Kim, Donghyeon and Ko, Hanseok},
+  journal={arXiv preprint arXiv:2112.04283},
+  year={2021}
 }
 ```
 ## Acknowledgments
