@@ -124,9 +124,12 @@ def set_path(args, experiment_name):
         args.test_dir = f'./check/{experiment_name}/testa2b'
     else:
         args.test_dir = f'./check/{experiment_name}/testb2a'
+    args.conf_dir = f'./check/{experiment_name}/conf'
     if not os.path.exists(args.checkpoint_dir):
         os.makedirs(args.checkpoint_dir)
     if not os.path.exists(args.sample_dir):
         os.makedirs(args.sample_dir)
     if not os.path.exists(args.test_dir):
         os.makedirs(args.test_dir)
+    if not os.path.exists(args.conf_dir):
+        os.makedirs(args.conf_dir)
