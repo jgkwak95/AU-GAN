@@ -62,13 +62,13 @@ python main_uncer.py --dataset_dir alderley
 
 ```bash
 
-# BDD100k (512x512)
+# BDD100k (256x256)
 python main_uncer.py --dataset_dir bdd100k 
                      --phase train
                      --experiment_name bdd_exp
-                     --batch_size 4 
-                     --load_size 572 
-                     --fine_size 512 
+                     --batch_size 8 
+                     --load_size 286
+                     --fine_size 256 
                      --use_uncertainty True
 
 ```
@@ -89,13 +89,13 @@ python main_uncer.py --dataset_dir alderley
 
 ```bash
 
-# BDD100k (512x512)
+# BDD100k (256x256)
 python main_uncer.py --dataset_dir bdd100k
                      --phase test
                      --experiment_name bdd_exp
                      --batch_size 1 
-                     --load_size 572 
-                     --fine_size 512 
+                     --load_size 286 
+                     --fine_size 256 
                     
 
 ```
