@@ -1,0 +1,13 @@
+
+__pycache__
+
+.idea/*.xml
+
+.git
+
+.idea
+
+datasets
+
+check 
+
