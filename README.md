@@ -45,11 +45,15 @@ rainy night and daytime. It was collected while driving the same route in each w
 </br>
 Please download datasets and then construct them following [ForkGAN](https://github.com/zhengziqiang/ForkGAN)
 
+## Pretrained Model 
+
+Download the pretrained model for BDD100K(256x512) [here](https://drive.google.com/file/d/1rvIF3yE9MwPWj0kD4IEstETyMQXYAHzr/view?usp=sharing) and unzip it to ./check/bdd_exp/bdd100k_256/
+
 ## Training
 
 ```bash
 
-# Alderley (256x256)
+# Alderley (256x512)
 python main_uncer.py --dataset_dir alderley
                      --phase train
                      --experiment_name alderley_exp
@@ -62,7 +66,7 @@ python main_uncer.py --dataset_dir alderley
 
 ```bash
 
-# BDD100k (256x256)
+# BDD100k (256x512)
 python main_uncer.py --dataset_dir bdd100k 
                      --phase train
                      --experiment_name bdd_exp
@@ -77,7 +81,7 @@ python main_uncer.py --dataset_dir bdd100k
 
 ```bash
 
-# Alderley (256x256)
+# Alderley (256x512)
 python main_uncer.py --dataset_dir alderley
                      --phase test
                      --experiment_name alderley_exp
@@ -89,7 +93,7 @@ python main_uncer.py --dataset_dir alderley
 
 ```bash
 
-# BDD100k (256x256)
+# BDD100k (256x512)
 python main_uncer.py --dataset_dir bdd100k
                      --phase test
                      --experiment_name bdd_exp
